@@ -64,7 +64,7 @@ if __name__ == '__main__':
     for fs in flist:
         if(os.path.isfile(fs)):
             sp = fs.split('.')
-            if(sp[-1]=='jpg' or sp[-1]=='jpeg'):
+            if(sp[-1]=='jpg' or sp[-1]=='jpeg' or sp[-1]=='JPG' or sp[-1]=='JPEG'):
                 #fname = 'IMG_20180709_182639.jpg'
                 res = exifread_infos(fs)
                 if(res[0]):

@@ -1,6 +1,6 @@
 # SJTU Photos Collection
 ## About this mission
-Everyone need to take **200** pictures of landmark buildings in SJTU, and preproceess it then copy them to your group leader.
+Everyone need to take **200** pictures of landmark buildings in SJTU, and pre-processing then copy them to your group leader.
 ## What do you need to do
 1. Ask for your group leaders for your responsible regions
     - For group leaders, please refer to [this map](http://www.ldmap.net/map.html?id=af4c396e-c313-45ae-9c93-d30980e1dfe0) for group assignments.

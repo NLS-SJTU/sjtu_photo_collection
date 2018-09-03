@@ -20,7 +20,7 @@ We need to filter the collected data from stage one, to make sure the data is tr
 #### What do you need to do
 1. Download [`drawPicturesOnMap.py`](https://github.com/NLS-SJTU/sjtu_photo_collection/blob/master/drawPicturesOnMap.py) along with the [sjtu_png.png](https://github.com/NLS-SJTU/sjtu_photo_collection/blob/master/sjtu_png.png) together. Put them into the same folder mentioned in Stage One step 3.
 2.  Run this script using python3 (it relys on the package `matplotlib` so you may need to run `pip install matplotlib` first)
-    - a. * Fisrt time running the script will have a processing time of 3-5 mins.* Give it some patience untill the UI pop-offs:![image](https://github.com/NLS-SJTU/sjtu_photo_collection/blob/readme-img/2018-09-03%2020-29-23%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
+    - a. **Fisrt time running the script will have a processing time of 3-5 mins.** Give it some patience untill the UI pop-offs:![image](https://github.com/NLS-SJTU/sjtu_photo_collection/blob/readme-img/2018-09-03%2020-29-23%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
     - b. Enlarge it and click on any blue point that you think the positioning is not correct. After selcetion it will turn red and the relative image will be shown on right side.![image](https://github.com/NLS-SJTU/sjtu_photo_collection/blob/readme-img/2018-09-03%2020-29-42%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
     - c. Click the "select into delete list" button to add the picture in to the deleting list
     - d. Repeat b-c untill all the outliers is added into the list.

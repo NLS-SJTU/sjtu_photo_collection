@@ -96,8 +96,8 @@ class MapShow:
         img_PIL_origin = Image.open(os.getcwd()+'/sjtu_png.png')
         self.img_PIL_origin = np.array(img_PIL_origin.resize((self.MAP_WID, self.MAP_HGT),Image.ANTIALIAS))
         self.img_PIL = copy.copy(self.img_PIL_origin)
-
         x0,y0=self.MAP_WID/2,self.MAP_HGT/2
+        
         for n in range(self.DATA_SZ):
             lng = self.data_list[n][0]
             lat = self.data_list[n][1]
@@ -105,6 +105,26 @@ class MapShow:
             lng0,lat0=lng-self.lng_min,lat-self.lat_min
             pos_x = int(round(lng0/self.MAP_X_SCALE))
             pos_y = self.MAP_HGT + int(round(lat0/self.MAP_Y_SCALE))
+            
+            if(pos_x<0 or pos_x>self.MAP_WID or pos_y<0 or pos_y>self.MAP_HGT):
+                if(not n in self.delete_data_num_list):
+                    self.delete_data_list.append(self.flist[n])
+                    self.delete_data_num_list.append(n)
+        self.button_delete_press()
+
+
+        for n in range(self.DATA_SZ):
+            lng = self.data_list[n][0]
+            lat = self.data_list[n][1]
+
+            lng0,lat0=lng-self.lng_min,lat-self.lat_min
+            pos_x = int(round(lng0/self.MAP_X_SCALE))
+            pos_y = self.MAP_HGT + int(round(lat0/self.MAP_Y_SCALE))
+            
+            if(pos_x<0 or pos_x>self.MAP_WID or pos_y<0 or pos_y>self.MAP_HGT):
+                if(not n in self.delete_data_num_list):
+                    self.delete_data_list.append(self.flist[n])
+                    self.delete_data_num_list.append(n)
 #             print(pos_x,pos_y)
             self.img_PIL[pos_y-self.MARK_SZ:pos_y+self.MARK_SZ+1,pos_x-self.MARK_SZ:pos_x+self.MARK_SZ+1,0]=0
             self.img_PIL[pos_y-self.MARK_SZ:pos_y+self.MARK_SZ+1,pos_x-self.MARK_SZ:pos_x+self.MARK_SZ+1,1]=0
@@ -130,7 +150,7 @@ class MapShow:
         plt.show()
         
  
-    def button_select_press(self,event):
+    def button_select_press(self):
         print('select')
         try:
             if(self.delete_data_num == -1):
@@ -144,7 +164,7 @@ class MapShow:
         except:
             print('Click image to choose delete file...')
             
-    def button_delete_press(self,event):
+    def button_delete_press(self):
         print('delete')
         try:
             if(not os.path.exists(self.dir+'/remove')):
@@ -170,7 +190,7 @@ class MapShow:
         except:
             print('Click image to choose delete file...')
             
-    def button_recover_press(self,event):
+    def button_recover_press(self):
         print('recover')
         try:
             if(self.delete_data_num in self.delete_data_num_list):
@@ -186,12 +206,12 @@ class MapShow:
         axes_posx = event.inaxes.get_position().get_points()[0][0]
         self.img_PIL = copy.copy(self.img_PIL_origin)
         if(axes_posx == 0.3):
-            self.button_select_press(event)
+            self.button_select_press()
         elif(axes_posx == 0.5):
-            self.button_delete_press(event)
+            self.button_delete_press()
             self.drawAllData()
         elif(axes_posx == 0.7):
-            self.button_recover_press(event)
+            self.button_recover_press()
         else:
             lng = round(self.lng_min + event.xdata*self.MAP_X_SCALE,6)
             lat = round(self.lat_min + (event.ydata-self.MAP_HGT)*self.MAP_Y_SCALE,6)
